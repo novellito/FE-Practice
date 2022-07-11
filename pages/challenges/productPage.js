@@ -2,11 +2,37 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 
+const OJ = ' hsl(26, 100%, 55%);';
 const Container = styled.div`
   background-color: hsl(0, 0%, 100%);
   height: 100vh;
   .left-card {
     right: -30px;
+  }
+  .oj {
+    background-color: ${OJ};
+    border: 1px solid ${OJ};
+  }
+  .nav-list li {
+    a {
+      &:hover {
+        background-color: inherit;
+      }
+    }
+    &:hover,
+    &.active-link {
+      background-color: inherit;
+      ::after {
+        content: '';
+        width: 87%;
+        margin: auto;
+        height: 7px;
+        background-color: ${OJ};
+        left: 5%;
+        position: absolute;
+        bottom: -33px;
+      }
+    }
   }
 `;
 
@@ -61,8 +87,8 @@ const Navbar = (
               fillRule="nonzero"
             />
           </svg>
-          <ul className="menu menu-horizontal hidden lg:inline-flex p-0 ml-12">
-            <li>
+          <ul className="menu menu-horizontal hidden lg:inline-flex p-0 ml-12 nav-list">
+            <li className="active-link">
               <a>Collections</a>
             </li>
             <li>
@@ -97,7 +123,7 @@ const Navbar = (
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">8</span>
+                <span className="badge badge-sm indicator-item oj">8</span>
               </div>
             </label>
             <div
@@ -136,7 +162,7 @@ const Navbar = (
                   </svg>
                 </div>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <button className="btn btn-primary btn-block oj">
                     Checkout
                   </button>
                 </div>
