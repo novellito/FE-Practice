@@ -54,7 +54,7 @@ const productPreview = (props) => {
         <div className="card md:card-side bg-base-100 shadow-xl">
           <img
             className=""
-            src="/perfume-desktop.jpg"
+            src="/product-preview/perfume-desktop.jpg"
             style={{
               width: 'auto',
               height: 'auto',
