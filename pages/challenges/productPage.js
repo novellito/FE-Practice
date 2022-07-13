@@ -279,7 +279,7 @@ const productPreview = (props) => {
                   </span>
                 </p>
                 <div className="btns">
-                  <div className="flex flex-col lg:flex-row mt-6">
+                  <div className="flex flex-col lg:gap-4 lg:flex-wrap lg:flex-row mt-6">
                     <div className="counter flex">
                       <button
                         onClick={() =>
@@ -329,7 +329,7 @@ const productPreview = (props) => {
                       onClick={() => {
                         setAtc(true);
                       }}
-                      className="btn btn-primary btn-block lg:btn-wide oj lg:ml-4"
+                      className="btn btn-primary btn-block lg:btn-wide oj"
                     >
                       <svg
                         width="15"
