@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 
-const OJ = ' hsl(26, 100%, 55%);';
+const OJ = ' hsl(26, 100%, 55%)';
 const LIGHT_OJ = 'hsl(25, 100%, 94%);';
 const Container = styled.div`
   background-color: hsl(0, 0%, 100%);
@@ -75,14 +75,6 @@ const productPreview = (props) => {
 
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <Container data-theme="light" className="px-8 lg:py-8 lg:px-28">
         <div className="-mx-8 drawer h-screen">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
