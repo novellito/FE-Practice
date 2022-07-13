@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
 
-const OJ = ' hsl(26, 100%, 55%)';
-const LIGHT_OJ = 'hsl(25, 100%, 94%);';
+const OJ = 'hsl(26, 100%, 55%)';
+const LIGHT_OJ = 'hsl(25, 100%, 94%)';
 const Container = styled.div`
   background-color: hsl(0, 0%, 100%);
   overflow: hidden;
@@ -56,8 +55,9 @@ const Container = styled.div`
   }
   .active-product {
     border: 4px solid ${OJ};
+    /* border-radius: 1rem; */
     img {
-      opacity: 50%;
+      /* opacity: 50%; */
     }
   }
 `;
@@ -72,6 +72,19 @@ const getItemSet = (count) => {
 const productPreview = (props) => {
   const [count, setCounter] = useState(0);
   const [isAtc, setAtc] = useState(false);
+  const [mainImage, setMainImage] = useState(
+    '/product-page/image-product-1.jpg'
+  );
+  const prevPic = useRef();
+
+  const handleProductClick = (e) => {
+    prevPic.current.classList.remove('active-product');
+    e.target.parentNode.classList.add('active-product');
+    prevPic.current = e.target.parentNode;
+    let mainImg = e.target.src.replace('http://localhost:3000', '');
+    mainImg = mainImg.replace('-thumbnail', '');
+    setMainImage(mainImg);
+  };
 
   return (
     <>
@@ -211,36 +224,62 @@ const productPreview = (props) => {
             </div>
             <hr className="mt-6 hidden lg:block" />
             <section className="lg:flex lg:px-16 lg:py-20 lg:gap-20 justify-center">
-              {/* <section className="h-full lg:flex lg:px-16 lg:py-20 lg:gap-20 overflow-hidden justify-center"> */}
-              <div className="left lg:w-1/2  lg:max-w-2xl">
+              <div className="lg:w-1/2 lg:rounded-2xl  lg:max-w-2xl">
                 <img
-                  className="lg:rounded-2xl lg:min-w-[25rem]"
-                  src="/product-page/image-product-1.jpg"
+                  className="lg:rounded-2xl lg:min-w-[25rem] cursor-pointer"
+                  src={mainImage}
                   alt="bg"
                 />
                 <div className="pics hidden lg:flex justify-between mt-8  min-w-[25rem]">
-                  <div className="active-product rounded-2xl  w-28 max-w-[6rem]">
+                  <div
+                    ref={prevPic}
+                    onClick={(e) => {
+                      handleProductClick(e);
+                    }}
+                    className="active-product rounded-2xl w-28 max-w-[6rem] cursor-pointer"
+                  >
                     <img
-                      className=""
+                      className="rounded-xl"
                       src="/product-page/image-product-1-thumbnail.jpg"
                       alt="bg"
                     />
                   </div>
-                  <img
-                    className="rounded-2xl min-w-[2rem] w-28 max-w-[6rem]"
-                    src="/product-page/image-product-2-thumbnail.jpg"
-                    alt="bg"
-                  />
-                  <img
-                    className="rounded-2xl min-w-[2rem]	 w-28 max-w-[6rem]"
-                    src="/product-page/image-product-3-thumbnail.jpg"
-                    alt="bg"
-                  />
-                  <img
-                    className="rounded-2xl  min-w-[2rem]	w-28 max-w-[6rem]"
-                    src="/product-page/image-product-4-thumbnail.jpg"
-                    alt="bg"
-                  />
+                  <div
+                    className="rounded-2xl w-28 max-w-[6rem] cursor-pointer"
+                    onClick={(e) => {
+                      handleProductClick(e);
+                    }}
+                  >
+                    <img
+                      className="rounded-xl"
+                      src="/product-page/image-product-2-thumbnail.jpg"
+                      alt="bg"
+                    />
+                  </div>
+                  <div
+                    className="rounded-2xl w-28 max-w-[6rem] cursor-pointer"
+                    onClick={(e) => {
+                      handleProductClick(e);
+                    }}
+                  >
+                    <img
+                      className="rounded-xl"
+                      src="/product-page/image-product-3-thumbnail.jpg"
+                      alt="bg"
+                    />
+                  </div>
+                  <div
+                    className="rounded-2xl w-28 max-w-[6rem] cursor-pointer"
+                    onClick={(e) => {
+                      handleProductClick(e);
+                    }}
+                  >
+                    <img
+                      className="rounded-xl"
+                      src="/product-page/image-product-4-thumbnail.jpg"
+                      alt="bg"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="px-8 py-10 min-h-96 lg:w-1/2 lg:max-w-xl">
