@@ -1,5 +1,14 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
+
+const images = [
+  '/product-page/image-product-1.jpg',
+  '/product-page/image-product-2.jpg',
+  '/product-page/image-product-3.jpg',
+  '/product-page/image-product-4.jpg',
+];
 
 const OJ = 'hsl(26, 100%, 55%)';
 const LIGHT_OJ = 'hsl(25, 100%, 94%)';
@@ -49,7 +58,7 @@ const Container = styled.div`
         background-color: ${OJ};
         left: 5%;
         position: absolute;
-        bottom: -33px;
+        bottom: -20px;
       }
     }
   }
@@ -72,6 +81,8 @@ const getItemSet = (count) => {
 const productPreview = (props) => {
   const [count, setCounter] = useState(0);
   const [isAtc, setAtc] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
   const [mainImage, setMainImage] = useState(
     '/product-page/image-product-1.jpg'
   );
@@ -88,11 +99,12 @@ const productPreview = (props) => {
 
   return (
     <>
-      <Container data-theme="light" className="px-8 lg:py-8 lg:px-28">
+      <Container data-theme="light" className="px-8  ">
+        {/* <Container data-theme="light" className="px-8 lg:py-8 lg:px-28"> */}
         <div className="-mx-8 drawer h-screen">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
-            <div className="navbar bg-base-100 fixed lg:relative ">
+            <div className="navbar bg-base-100 fixed lg:relative lg:px-28 lg:pt-8">
               <div className="flex-none lg:hidden">
                 <label
                   htmlFor="my-drawer-3"
@@ -222,14 +234,37 @@ const productPreview = (props) => {
                 </div>
               </div>
             </div>
-            <hr className="mt-6 hidden lg:block" />
-            <section className="lg:flex lg:px-16 lg:py-20 lg:gap-20 justify-center">
-              <div className="lg:w-1/2 lg:rounded-2xl  lg:max-w-2xl">
+            <hr className="mx-28 mt-6 hidden lg:block" />
+            <section className="lg:flex lg:px-28 lg:pt-14 lg:gap-20 justify-center">
+              <div className="lg:w-1/2 lg:rounded-2xl  lg:max-w-md">
                 <img
-                  className="lg:rounded-2xl lg:min-w-[25rem] cursor-pointer"
+                  className="lg:rounded-2xl lg:min-w-[20rem] cursor-pointer"
                   src={mainImage}
+                  data-lightbox="image-1"
                   alt="bg"
+                  onClick={() => setIsOpen(true)}
                 />
+                {isOpen && (
+                  <Lightbox
+                    mainSrc={images[photoIndex]}
+                    nextSrc={images[(photoIndex + 1) % images.length]}
+                    prevSrc={
+                      images[(photoIndex + images.length - 1) % images.length]
+                    }
+                    onCloseRequest={() => setIsOpen(false)}
+                    onMovePrevRequest={() =>
+                      setPhotoIndex(
+                        (prevState) =>
+                          (prevState + images.length - 1) % images.length
+                      )
+                    }
+                    onMoveNextRequest={() =>
+                      setPhotoIndex(
+                        (prevState) => (prevState + 1) % images.length
+                      )
+                    }
+                  />
+                )}
                 <div className="pics hidden lg:flex justify-between mt-8  min-w-[25rem]">
                   <div
                     ref={prevPic}
@@ -382,7 +417,7 @@ const productPreview = (props) => {
           </div>
           <div className="drawer-side">
             <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-            <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
+            <ul className="menu p-4 w-80 bg-base-100">
               <li>
                 <a>Collections</a>
               </li>

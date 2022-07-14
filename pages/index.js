@@ -6,6 +6,7 @@ const CHALLENGES = 'challenges';
 const PRODUCT_PREVIEW = `/${CHALLENGES}/productPreview`;
 const PROFILE_CARD = `/${CHALLENGES}/profileCard`;
 const PRODUCT_PAGE = `/${CHALLENGES}/productPage`;
+const SUNNY_SIDE_AGENCY = `/${CHALLENGES}/sunnySideAgency`;
 
 export default function Home() {
   return (
@@ -22,6 +23,9 @@ export default function Home() {
         </Link>
         <Link href={PRODUCT_PAGE}>
           <a className="link-primary">{PRODUCT_PAGE} </a>
+        </Link>
+        <Link href={SUNNY_SIDE_AGENCY}>
+          <a className="link-primary">{SUNNY_SIDE_AGENCY} </a>
         </Link>
       </div>
     </div>
