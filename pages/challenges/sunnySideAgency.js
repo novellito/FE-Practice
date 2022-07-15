@@ -14,6 +14,21 @@ const Container = styled.div`
     font-family: Fraunces;
     color: black;
     margin-top: 1.5rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 7px;
+      background-color: #fad400;
+      opacity: 35%;
+      bottom: 2px;
+      width: 120px;
+      left: 210px;
+      @media (min-width: 768px) {
+        left: -3px;
+      }
+    }
   }
   .title {
     font-family: Fraunces;
