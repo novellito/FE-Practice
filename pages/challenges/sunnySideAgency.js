@@ -47,17 +47,91 @@ const Container = styled.div`
       font-weight: 900;
     }
   }
+  .menu {
+    li {
+      padding: 0.5rem;
+      text-align: center;
+    }
+    a,
+    button {
+      font-size: 1.2rem;
+      font-weight: bold;
+      justify-content: center;
+    }
+  }
 `;
 
 const sunnySideAgency = (props) => {
   return (
     <>
       <Container data-theme="light">
+        <div className="navbar px-8 py-4 fixed bg-transparent">
+          <div className="navbar-start flex-1">
+            <img className="" src="/sunny-agency/logo.svg" alt="" />
+          </div>
+          <div className="hidden md:block flex-none">
+            <ul className="menu menu-horizontal p-0 text-white">
+              <li>
+                <a>About</a>
+              </li>
+              <li>
+                <a>Services</a>
+              </li>
+              <li>
+                <a>Projects</a>
+              </li>
+              <li className="">
+                <button className="btn !rounded-full border-white bg-white text-black">
+                  Contact
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div className="navbar-end  md:hidden">
+            <div className="dropdown dropdown-end ">
+              <label tabIndex="0" className="btn btn-ghost btn-circle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h7"
+                  />
+                </svg>
+              </label>
+              <ul
+                tabIndex="0"
+                className="flex justify-center menu menu-compact dropdown-content min-w-[85vw] mt-3 p-2 shadow bg-base-100 rounded-box"
+              >
+                <li className="px-10 text-xl">
+                  <a>About</a>
+                </li>
+                <li className="px-10 text-xl">
+                  <a>Services</a>
+                </li>
+                <li className="px-10 text-xl">
+                  <a>Projects</a>
+                </li>
+                <li className="px-10 text-xl">
+                  <button className="btn !rounded-full border-white bg-[#fad400] text-black w-1/2 mx-auto">
+                    Contact
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div
           className="hero min-h-screen"
           style={{ backgroundImage: 'url(/sunny-agency/image-header.jpg)' }}
         >
-          {/* <div className="hero-overlay"></div> */}
           <div className=" hero-content text-center text-neutral-content">
             <div className="">
               <h1 className=" text-5xl font-bold">WE ARE CREATIVES</h1>
@@ -70,7 +144,6 @@ const sunnySideAgency = (props) => {
           </div>
         </div>
         <section className="grid md:grid-cols-2">
-          {/* <img src="/sunny-agency/image-transform.jpg" alt="" /> */}
           <div className="py-24 text-center md:text-left md:py-0 px-16 lg:px-28 min-w-[20rem] flex flex-col justify-center align-middle text order-2 md:order-1">
             <h1 className="title text-3xl lg:text-4xl mb-4">
               Transform your brand
@@ -106,12 +179,10 @@ const sunnySideAgency = (props) => {
           <div className="graphic-design order-5 relative flex text-center justify-center">
             <img
               className="order-5 w-full"
-              //   className="order-3 object-cover w-full absolute"
               src="/sunny-agency/image-graphic-design.jpg"
               alt=""
             />
             <div className="subtext absolute flex text-center flex-col px-20 max-w-[32rem] bottom-10 md:bottom-8 lg:bottom-20">
-              {/* <div className="subtext absolute flex text-center flex-col px-20 bottom-4 md:bottom-36"> */}
               <h1
                 className="title text-2xl lg:text-4xl mb-4"
                 style={{ color: 'hsl(167, 40%, 24%)' }}
